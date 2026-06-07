@@ -40,9 +40,9 @@ export class SocketGateway {
         }
       }, 60000);
 
-      this.pendingTimeouts.set(roomId, timeout);
       // Emit event to room
       this.server.to(roomId).emit('serverMessage', message);
+      this.pendingTimeouts.set(roomId, timeout);
     });
   }
 
